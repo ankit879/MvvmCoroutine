@@ -1,6 +1,6 @@
 package com.example.mvvmcoroutine.repository
 
-import com.example.mvvmcoroutine.Resource
+import com.example.mvvmcoroutine.Result
 import com.example.mvvmcoroutine.api.ApiServices
 import com.example.mvvmcoroutine.api.retrofit
 import com.example.mvvmcoroutine.model.GetCardResponse
@@ -16,18 +16,18 @@ class GetCardRepository() {
 
 class YourRepository(private val apiService: ApiServices) {
 
-    suspend fun getSomething(access_token: String): Resource<GetCardResponse> {
+    suspend fun getSomething(access_token: String): Result<GetCardResponse> {
         return try {
             val response = apiService.getCardList(access_token)
             if (response.isSuccessful) {
                 response.body()?.let { body ->
-                    Resource.Success(body)
-                } ?: Resource.Error("Empty response body")
+                    Result.Success(body)
+                } ?: Result.Error("Empty response body")
             } else {
-                Resource.Error("Error code: ${response.code()} ${response.message()}")
+                Result.Error("Error code: ${response.code()} ${response.message()}")
             }
         } catch (e: Exception) {
-            Resource.Error(e.localizedMessage ?: "An unknown error occurred")
+            Result.Error(e.localizedMessage ?: "An unknown error occurred")
         }
     }
 }

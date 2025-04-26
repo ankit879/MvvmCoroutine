@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">MvvmCoroutine</string>
+    <string name="network_error_please_try_later">Failed to connect</string>
+    <string name="connection_lost_please_try_later">connection_lost_please_try_later</string>
+    <string name="server_error_please_try_later">server_error_please_try_later</string>
+    <string name="please_enter_account_name">please_enter_account_name</string>
+    <string name="something_went_wrong">something_went_wrong</string>
 </resources>

@@ -1,6 +1,5 @@
 package com.example.mvvmcoroutine.api
 
-import com.example.mvvmcoroutine.Resource
 import com.example.mvvmcoroutine.model.GetCardResponse
 import retrofit2.Response
 import retrofit2.Retrofit
@@ -10,13 +9,13 @@ import retrofit2.http.Header
 
 interface ApiServices {
     @GET("users/saveCardList")
-   suspend fun getCardList(
+    suspend fun getCardList(
         @Header("access_token") access_token: String,
-    ):Response<GetCardResponse>
+    ): Response<GetCardResponse>
 
 }
 
-val retrofit by lazy {
+val retrofit: ApiServices by lazy {
     Retrofit.Builder().baseUrl("https://admin.intlaqride.com/")
         .addConverterFactory(GsonConverterFactory.create())
         .build()
